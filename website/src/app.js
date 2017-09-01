@@ -6,14 +6,7 @@ import CmsRoute from './lib/CmsRoute'
 import templateMapping from './config/templateMapping'
 
 function App() {
-  return (
-    <div>
-      <div>Header</div>
-      <div>
-        <CmsRoute templateMapping={templateMapping} domain='cms.react-cms-rendering.local' />
-      </div>
-      <div>Footer</div>
-    </div>)
+  return (<CmsRoute templateMapping={templateMapping} domain='cms.react-cms-rendering.local' />)
 }
 
 ReactDOM.render(
