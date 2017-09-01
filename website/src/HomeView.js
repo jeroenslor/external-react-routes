@@ -1,40 +1,20 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
+
+import Header from './Header'
+import Footer from './Footer'
+import MobileNav from './MobileNav'
 
 // todo modify header with helmet
 // todo modify body className also with helmet?
 
 function HomeView({ layout, page }) {
-  const layoutContent = layout.content
   const pageContent = page.content
 
   return (
     <div>
-      <div className='mobile-nav'>
-        <nav className='nav-bar'>
-        
-        </nav>
-      </div>
-      <header className='header'>
-        <div className='logo'>
-          {
-            layoutContent.siteLogoUrl
-              ? (<div className='nav-link--home'>
-                <img className='logo-image' src={layoutContent.siteLogoUrl} alt={layoutContent.siteName} />
-              </div>)
-              : <a className='nav-link nav-link--home nav-link--home__text logo-text' href='/'>{layoutContent.siteName}</a>
-          }
-        </div>
-        <nav className='nav-bar top-nav'>
-        
-        </nav>
-        <div className='mobile-nav-handler'>
-          <div className='hamburger lines' id='toggle-nav'>
-            <span></span>
-          </div>
-        </div>
-      </header>
+      <MobileNav />
+      <Header layout={layout} />
 
       <main>
         <section className='section section--full-height background-image-full overlay overlay--dark section--content-center section--thick-border'
@@ -50,15 +30,7 @@ function HomeView({ layout, page }) {
         </section>
       </main>
 
-      <footer className='section--themed'>
-        <div className='container'>
-            <div className='row'>
-                <div className='col-md-12 ta-center'>
-                    {layoutContent.footerAddress}
-                </div>
-            </div>
-        </div>
-    </footer>
+      <Footer layout={layout} />
     </div>
   )
 }

@@ -10,6 +10,7 @@ class CmsView extends Component {
       route: null,
       page: null,
       layout: null,
+      globalization: null,
       loading: true,
       error: false
     }
@@ -24,8 +25,8 @@ class CmsView extends Component {
     // als use matchPath or nested route the get params to the components?  
     this.setState({ loading: true })
     getViewData(match.url)
-      .then(({ route, page, layout }) => {
-        this.setState({ loading: false, success: true, error: false, route, page, layout })
+      .then(({ route, page, layout, globalization }) => {
+        this.setState({ loading: false, success: true, error: false, route, page, layout, globalization })
       })
       .catch(error => {
         console.error(error)
@@ -48,8 +49,8 @@ class CmsView extends Component {
       throw Error(`component not found for template ${this.state.page.template}`)
     }
 
-    const { route, page, layout } = this.state
-    return <Route path={this.state.route.pattern} component={(props) => React.createElement(elementByTemplate, { ...props, route, page, layout })} /> // use route to add support for params in view component
+    const { route, page, layout, globalization } = this.state
+    return <Route path={this.state.route.pattern} component={(props) => React.createElement(elementByTemplate, { ...props, route, page, layout, globalization })} /> // use route to add support for params in view component
   }
 }
 
