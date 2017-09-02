@@ -2092,6 +2092,36 @@ article {
     overflow: hidden
 }
 
+/* CUSTOM */
+.loader {
+    height: 4px;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+
+    overflow: hidden;
+}
+.loader:before{
+    display: block;
+    position: absolute;
+    content: "";
+    left: -200px;
+    width: 200px;
+    height: 4px;
+    background-color: #2980b9;
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}
+/* END-CUSTOM */
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type=date].form-control, input[type=datetime-local].form-control, input[type=month].form-control, input[type=time].form-control {
         line-height: 34px

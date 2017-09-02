@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Header({ layout }) {
   const layoutContent = layout.content
@@ -11,7 +12,7 @@ function Header({ layout }) {
             ? (<div className='nav-link--home'>
               <img className='logo-image' src={layoutContent.siteLogoUrl} alt={layoutContent.siteName} />
             </div>)
-            : <a className='nav-link nav-link--home nav-link--home__text logo-text' href='/'>{layoutContent.siteName}</a>
+            : <Link className='nav-link nav-link--home nav-link--home__text logo-text' to='/'>{layoutContent.siteName}</Link>
         }
       </div>
       <nav className='nav-bar top-nav'>

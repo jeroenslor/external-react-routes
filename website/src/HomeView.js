@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Header from './Header'
-import Footer from './Footer'
-import MobileNav from './MobileNav'
+import DefaultLayout from './DefaultLayout'
 
 // todo modify header with helmet
 // todo modify body className also with helmet?
 
-function HomeView({ layout, page }) {
-  const pageContent = page.content
+class HomeView extends Component {
+  componentDidMount() {
+    console.log('component did mount homeview')
+  }
 
-  return (
-    <div>
-      <MobileNav />
-      <Header layout={layout} />
+  render() {
+    const { layout, page, loading } = this.props
+    const pageContent = page.content
 
-      <main>
+    return (
+      <DefaultLayout layout={layout} loading={loading}>
         <section className='section section--full-height background-image-full overlay overlay--dark section--content-center section--thick-border'
           style={{ backgroundImage: pageContent.heroBackgroundImageUrl ? `url('http://cms.react-cms-rendering.local${pageContent.heroBackgroundImageUrl}')` : null }}>
           <div className='section__hero-content'>
@@ -28,11 +28,9 @@ function HomeView({ layout, page }) {
 
           </div>
         </section>
-      </main>
-
-      <Footer layout={layout} />
-    </div>
-  )
+      </DefaultLayout>
+    )
+  }
 }
 
 export default HomeView

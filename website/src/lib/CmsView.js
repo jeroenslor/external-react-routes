@@ -37,11 +37,13 @@ class CmsView extends Component {
     this.getViewData(match)
   }
   componentDidMount() {
+    console.log('component did mount cmsview')
     this.getViewData(this.props.match)
   }
   render() {
-    if (this.state.loading) {
-      return <div>Loading ...</div>
+    if (!this.state.page){
+      console.log('no page, returning null')
+      return null
     }
 
     const elementByTemplate = this.props.templateMapping[this.state.page.template]
@@ -49,8 +51,10 @@ class CmsView extends Component {
       throw Error(`component not found for template ${this.state.page.template}`)
     }
 
-    const { route, page, layout, globalization } = this.state
-    return <Route path={this.state.route.pattern} component={(props) => React.createElement(elementByTemplate, { ...props, route, page, layout, globalization })} /> // use route to add support for params in view component
+    console.log('rendering cms view', this.state)
+
+    const { route, page, layout, globalization, loading } = this.state 
+    return React.createElement(elementByTemplate, { route, page, layout, globalization, loading })
   }
 }
 

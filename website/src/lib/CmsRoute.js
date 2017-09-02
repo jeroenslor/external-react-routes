@@ -5,7 +5,7 @@ import CmsView from './CmsView'
 
 function CmsRoute({ path, templateMapping }) {
   return (
-    <Route path={path || '*'} component={(props) => <CmsView templateMapping={templateMapping} {...props} />} />
+    <Route path={path || '*'} render={(props) => <CmsView templateMapping={templateMapping} {...props} />} /> // use render to avoid mount and unmount of cmsview
   )
 }
 
